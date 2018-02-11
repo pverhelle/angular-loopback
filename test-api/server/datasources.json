@@ -1,0 +1,11 @@
+{
+  "testDS": {
+    "host": "test_mysql",
+    "port": 3306,
+    "database": "test",
+    "password": "idontlikerandompasswords",
+    "name": "testDS",
+    "user": "root",
+    "connector": "mysql"
+  }
+}

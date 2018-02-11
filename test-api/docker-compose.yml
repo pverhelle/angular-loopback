@@ -1,0 +1,24 @@
+version: "3"
+services:
+  test_mysql:
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: idontlikerandompasswords
+      MYSQL_USER: root
+    image: mysql
+    ports:
+      - 3306:3306
+  test_api:
+    image: node:carbon
+    links:
+      - test_mysql
+    depends_on:
+      - test_mysql
+    volumes:
+      - .:/var/www/api
+      - ../test-app/src/app/shared:/var/www/app/src/app/shared
+    working_dir: /var/www/api
+    command: node --inspect-brk=0.0.0.0:9229 server/server.js
+    ports:
+      - 3000:3000
+      - 9229:9229
