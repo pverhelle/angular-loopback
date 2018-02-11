@@ -9,7 +9,10 @@ services:
     ports:
       - 3306:3306
   test_api:
-    image: node:carbon
+    image: node:carbon    
+    build:
+      context: ./
+      dockerfile: Dockerfile
     links:
       - test_mysql
     depends_on:
@@ -18,7 +21,7 @@ services:
       - .:/var/www/api
       - ../test-app/src/app/shared:/var/www/app/src/app/shared
     working_dir: /var/www/api
-    command: node --inspect-brk=0.0.0.0:9229 server/server.js
+    command: bash -c 'npm install && node --inspect=0.0.0.0:9229 server/server.js'
     ports:
       - 3000:3000
       - 9229:9229
