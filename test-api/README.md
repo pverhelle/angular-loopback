@@ -2,6 +2,7 @@
 ## loopback
 1. install loopback-cli `npm install -g loopback-cli`
   - depending on your machine, you might need to run `npm install -g --production windows-build-tools`
+  - and install openssl from https://slproweb.com/products/Win32OpenSSL.html
 2. create a new loopback project
   - run `lb` and follow the prompt
 3. clean the project to allow mounting it in docker later
